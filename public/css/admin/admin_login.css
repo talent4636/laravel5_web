@@ -1,0 +1,26 @@
+
+/**后台登陆页的css，由于独立，单独写
+div.main_box{width: 900px;height: 300px;margin: 0 auto;border: 1px solid #9B410E;margin-top: 200px;}
+div.login_pic{width: 500px;height: 100%;overflow: hidden;float: left;}
+div.login_pic img{width: 100%;height: 100%;}
+div.login_table{width: 350px;padding: 25px;float: left;}
+*/
+
+body{background: url("../../images/system/admin/login_pic_large.jpg") no-repeat left top;background-size: 100%;}
+
+div.main_box{width: 400px;height: 200px;margin: 0 auto;margin-right: 100px;border: 1px solid #9B410E;margin-top: 300px;border-radius: 10px;background-color: #ffffff;}
+div.login{padding: 20px 10px;}
+/*div.login tbody{margin: 20px 10px;}*/
+div.login th,div.login th{line-height: 35px;}
+div.login th{float: right;}
+div.login td{width: 60%;}
+div.login td input{width: 180px;line-height: 20px;border-radius: 3px;border: 1px solid #3367AC;padding: 0px 5px;
+}
+div.login td input.vcode{width: 60px;}
+.vcode_img{background: black;width: 70px;height: 25px;}
+input.submit-login{margin-top: 10px;font-size: 20px;margin-left: 35%;width: 100px;background: blue;color: white;border-radius: 5px;border: 0px;}
+
+/*footer*/
+div.footer{width: 100%;text-align: center;font-size: 12px;color: #000000;position: absolute;bottom: 10px;}
+div.footer span{background-color: #FFFFFF;padding:5px 10px;border-radius: 2px;}
+
