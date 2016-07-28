@@ -14,21 +14,31 @@ class AdminController extends Controller
             'name' => '概览',
             'default' => '',
             'icon' => 'dashboard',
-            'sub_menu' => array(
-                'dashboard_1' => array(
-                    'name' => '概览-1',
-                    'default' => '',
-                ),
-                'dashboard_2' => array(
-                    'name' => '概览-2',
-                    'default' => '',
-                ),
-            ),
+        ),
+        'frontsetting' => array(
+            'name' => '前台相关设置',
+            'default' => '',
+            'icon' => 'frontsetting',
         ),
         'user' => array(
             'name' => '用户中心',
             'default' => '',
             'icon' => 'user',
+        ),
+        'questions' => array(
+            'name' => '题库',
+            'default' => '',
+            'icon' => 'questions',
+            'sub_menu' => array(
+                'language' => array(
+                    'name' => '语言管理',
+                    'default' => '',
+                ),
+                'questions' => array(
+                    'name' => '题目列表',
+                    'default' => '',
+                ),
+            ),
         ),
         'content' => array(
             'name' => '文章中心',
@@ -62,8 +72,31 @@ class AdminController extends Controller
 
     //设置当前nav选中
     public function setNav($nav_name='setting'){
+        $sub_name = '';
+        if(strpos($nav_name,'/')){
+            $ori_nav = $nav_name;
+            $nav_name = explode('/',$ori_nav)[0];
+            $sub_name = explode('/',$ori_nav)[1];
+        }
         foreach($this->nav as $key => $nav){
             $this->nav[$key]['active'] = $key==$nav_name?true:false;
+            if($this->nav[$key]['active'] && isset($this->nav[$key]['sub_menu'])){
+                foreach($this->nav[$key]['sub_menu'] as $k => $v){
+                    if($sub_name){
+                        $this->nav[$key]['sub_menu'][$k]['active'] = $k==$sub_name?true:false;
+                    }else{
+                        $this->nav[$key]['sub_menu'][$k]['active'] = false;
+                    }
+                }
+                //如果没有选中的子菜单，设置第一个选中
+                if(!$sub_name){
+                    $this->nav[$key]['sub_menu'][key($this->nav[$key]['sub_menu'])]['active'] = true;
+                }
+            }else{
+                if(isset($this->nav[$key]['sub_menu'])){
+                    unset($this->nav[$key]['sub_menu']);
+                }
+            }
         }
     }
 

@@ -27,7 +27,7 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'Front\HomeController@index');
 
 Route::get('/about',function(){
     return view('static.about');
@@ -36,12 +36,21 @@ Route::get('/about',function(){
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/','Admin\DashboardController@index');
 
+    //前台相关设置
+    Route::get('/frontsetting','Admin\FrontsettingController@index');
+
     //设置
     Route::get('/setting','Admin\SettingController@index');
     Route::post('/setting/image','Admin\SettingController@image');
     Route::post('/setting/save','Admin\SettingController@save');
 
+    //用户相关
     Route::get('/user','Admin\UserController@index');
+
+    //题库菜单
+    Route::get('/questions','Admin\Questions\LanguageController@index');
+    Route::get('/questions/language','Admin\Questions\LanguageController@index');
+    Route::get('/questions/questions','Admin\Questions\QuestionsController@index');
 
     //文章
     Route::get('/content','Admin\ContentController@index');
@@ -51,6 +60,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/content/delete/{id}','Admin\ContentController@delete');
     Route::get('/content/edit/{id}','Admin\ContentController@edit');
 
+    //
     Route::get('/dashboard','Admin\DashboardController@index');
     Route::get('/login','Admin\PassportController@index');
 });
