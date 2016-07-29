@@ -26,7 +26,7 @@ class AdminController extends Controller
             'icon' => 'user',
         ),
         'questions' => array(
-            'name' => '题库',
+            'name' => '题库管理',
             'default' => '',
             'icon' => 'questions',
             'sub_menu' => array(

@@ -27,30 +27,26 @@ class LanguageController extends QuestionsController
     }
 
     public function create(){
-        return view('admin.questions.language.edit')
-            ->with('base_nav',$this->nav)
-            ->with('user_info',$this->user_info)
-            ->with('copy_right',$this->copy_right)
+        return parent::_with_base_info('admin.questions.language.edit')
             ->with('top_language',$this->_get_top_lang());
     }
 
     public function edit($id){
-        return view('admin.questions.language.edit')
-            ->with('base_nav',$this->nav)
-            ->with('user_info',$this->user_info)
-            ->with('copy_right',$this->copy_right)
+        return parent::_with_base_info('admin.questions.language.edit')
             ->with('top_language',$this->_get_top_lang())
             ->with('language',mdlLanguage::find($id));
     }
 
     public function save(Request $request){
-        mdlLanguage::create($request->all());
+        if($request->get('id')){
+            mdlLanguage::find($request->get('id'))->update($request->all());
+        }else{
+            mdlLanguage::create($request->all());
+        }
         return redirect('admin/questions/language');
     }
 
     public function delete($id){
-//        $language = new mdlLanguage();
-//        $language->where('id',$id)->delete();
         mdlLanguage::where('id',$id)->delete();
         return redirect('admin/questions/language');
     }
