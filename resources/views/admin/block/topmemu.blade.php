@@ -33,7 +33,7 @@
 </div>
 @if($sub_menu)
 <br>
-<div class="container pull-left" style="width:10%;">
+<div class="container pull-left" style="width:10%;height: 500px;">
     <div class="row clearfix">
         <div class="col-md-12 column">
             <div class="list-group">

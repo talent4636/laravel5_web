@@ -18,7 +18,7 @@
     <div class="body">
         <br>
         @include('admin.block.topmemu')
-        <br>
+        {{--<br>--}}
         @yield('mainArea')
     </div>
 </body>

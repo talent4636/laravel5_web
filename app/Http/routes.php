@@ -50,6 +50,10 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     //题库菜单
     Route::get('/questions','Admin\Questions\LanguageController@index');
     Route::get('/questions/language','Admin\Questions\LanguageController@index');
+    Route::get('/questions/language/create','Admin\Questions\LanguageController@create');
+    Route::get('/questions/language/edit/{id}','Admin\Questions\LanguageController@edit');
+    Route::post('/questions/language/save','Admin\Questions\LanguageController@save');
+    Route::get('/questions/language/delete/{id}','Admin\Questions\LanguageController@delete');
     Route::get('/questions/questions','Admin\Questions\QuestionsController@index');
 
     //文章
